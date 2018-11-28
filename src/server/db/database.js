@@ -1,4 +1,5 @@
-const dbconfig = require('./db/config.js').db;
+const mysql = require('mysql');
+const dbconfig = require('./config.js').db;
 
 const db = mysql.createConnection({
   host: dbconfig.host,
@@ -10,7 +11,7 @@ const db = mysql.createConnection({
 db.connect(function(error){
   if(error){
     console.error('Error connecting to database');
-    console.error(e);
+    console.error(error);
     return;
   }else{
     console.log('Connected to DB on ' + dbconfig.host + '.' + dbconfig.database);
